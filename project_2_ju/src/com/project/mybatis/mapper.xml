@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="projcet2">
+	
+	<select id="login" resultType="accountVO">
+		SELECT ID, PWD FROM ACCOUNT ORDER BY NO;
+	</select>
+	
+	<select id="all" resultType="accountVO">
+		SELECT * FROM ACCOUNT ORDER BY NO;
+	</select>
+	
+	<select id="id" resultType="accountVO">
+		SELECT ID FROM ACCOUNT ORDER BY NAME
+	</select>
+	
+	<select id="id" resultType="accountVO">
+		SELECT ID FROM ACCOUNT ORDER BY NAME
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
