@@ -19,8 +19,10 @@ public class AccountDAO {
 	
 	// 로그인 =====================================================
 	//로그인시 아이디로 전체내용 조회 -> 1.아이디 있는지 2. 비밀번호 일치한지 -> id : 값, pwd : 값
-	public static List<AccountVO> getAccountSearchLogin(String id, String pwd) {
+	public static List<AccountVO> getAccountLogin(String id, String pwd) {
 		try (SqlSession ss = DBService.getFactory().openSession()) {
+			System.out.println("id : " + id);
+			System.out.println("pwd : " + pwd);
 			Map<String, String> map = new HashMap<>();
 			map.put("id", id);
 			map.put("pwd", pwd);
@@ -35,7 +37,7 @@ public class AccountDAO {
 	//아이디중복체크 -> 입력된아이디 DB에서 조회 null이면 성공
 	public static String getAccountSearchLoginCheckId(String id) {
 		try (SqlSession ss = DBService.getFactory().openSession()) {
-			return ss.selectOne("project2.email", id);
+			return ss.selectOne("project2.id", id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -43,17 +45,17 @@ public class AccountDAO {
 	}
 	
 	// 찾기 ===================================================
-	//아이디찾기 -> 이메일 (닉네임)
+	//아이디찾기 -> 이메일 (닉네임)로
 	public static String getAccountSearchId(String email) {
 		try (SqlSession ss = DBService.getFactory().openSession()) {
-			return ss.selectOne("project2.email", email);
+			return ss.selectOne("project2.searchIdByEmail", email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	//비밀번호 찾기
+	//비밀번호 찾기 -> 아이디로
 	public static String getAccountSearchPwd(String id) {
 		try (SqlSession ss = DBService.getFactory().openSession()) {
 			return ss.selectOne("project2.id", id);
