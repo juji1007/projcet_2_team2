@@ -12,16 +12,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.command.Command;
+import com.project.command.FindIdCommand;
+import com.project.command.FindIdOkCommand;
+import com.project.command.FindPasswordCommand;
+import com.project.command.FindPasswordOkCommand;
 import com.project.command.LoginCommand;
+import com.project.command.MemberJoinCommand;
+import com.project.command.MemberJoinOkCommand;
 
-@WebServlet("/controller")
-public class AllCommandController extends HttpServlet {
+@WebServlet("/loginController")
+public class LoginCommandController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Map<String, Command> commands;
 	
 	public void init(ServletConfig config) throws ServletException {
 		commands = new HashMap<String, Command>();
 		commands.put("login", new LoginCommand());
+		commands.put("findId", new FindIdCommand());
+		commands.put("findPassword", new FindPasswordCommand());
+		commands.put("findIdOk", new FindIdOkCommand());
+		commands.put("findPasswordOk", new FindPasswordOkCommand());
+		commands.put("memberJoin", new MemberJoinCommand());
+		commands.put("memberJoinOk", new MemberJoinOkCommand());
 	}
 	
 	@Override
@@ -40,3 +52,5 @@ public class AllCommandController extends HttpServlet {
 		doGet(req, resp);
 	}
 }
+
+

@@ -10,6 +10,10 @@ public class AccountVO {
 	private int critic_check;
 	private String email;
 	
+	
+	public AccountVO() {
+	}
+
 	public AccountVO(int no, String name, String id, String pwd, String nick, int critic_check, String email) {
 		this.no = no;
 		this.name = name;

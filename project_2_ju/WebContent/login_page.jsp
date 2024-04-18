@@ -7,11 +7,19 @@
 <title>로그인</title>
 <script>
 	function member_join(frm) {
-		frm.action="controller?type=memberJoin";
+		frm.action="loginController?type=memberJoin";
 		frm.submit();
 	}
 	function login(frm) {
-		frm.action="controller?type=login";
+		frm.action="loginController?type=login";
+		frm.submit();
+	}
+	function find_id(frm) {
+		frm.action="loginController?type=findId";
+		frm.submit();
+	}
+	function find_password(frm) {
+		frm.action="loginController?type=findPassword";
 		frm.submit();
 	}
 </script>
@@ -48,7 +56,9 @@
 						<td colspan="2">
 							<input type="reset" value="초기화"/>
 							<input type="button" value="회원가입" onclick="member_join(this.form)"/>
-							<input type="button" value="아이디찾기" onclick="search_id(this.form)"/>
+							<input type="button" value="아이디찾기" onclick="find_id(this.form)"/>
+<!-- 							<input type="button" href="loginController?type=findPassword" value="비밀번호찾기" /> -->
+							<input type="button" value="비밀번호찾기" onclick="find_password(this.form)"/>
 						</td>
 					</tr>
 					<tr>
