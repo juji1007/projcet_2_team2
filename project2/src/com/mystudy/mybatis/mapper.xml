@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PROJECT2">
+	
+	<select id="mvTitle" resultType="com.mystudy.model.vo.movieVO">
+		SELECT *
+		FROM MOVIE
+		ORDER BY MV_RATE DESC
+	</select>
+	
+	<!-- 영화제목으로 검색 -->
+	<select id="mvSearch"  parameterType="string" resultType="com.mystudy.model.vo.movieVO">
+		SELECT *
+		FROM MOVIE
+		WHERE MV_TITLE = INITCAP(#{mvTitle})
+	</select>
+	
+	<!-- 동적 검색 -->
+	<select id="movie" parameterType="map" resultType="com.mystudy.model.vo.movieVO">
+		SELECT *
+		FROM MOVIE
+		<choose>
+			<when test="idx == 1">
+				 ORDER BY MV_DATE DESC
+			</when>
+			<when test="idx == 2">
+				ORDER BY MV_RATE DESC
+			</when>
+			<otherwise>
+				ORDER BY MV_DATE DESC
+			</otherwise>
+		</choose>
+		
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
