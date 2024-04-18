@@ -12,12 +12,12 @@
 // 	System.out.println("id : " + id);
 	
 	//아이디, 비번 DB에서 조회
-// 	List<AccountVO> list = AccountDAO.getAccountLogin(id, pwd);
-// 	System.out.println("list : " + list);
+	AccountVO avo = AccountDAO.getAccountLogin(id, pwd);
+	System.out.println("avo : " + avo);
 	
-// 	if (list == null) {
-	String id1 = AccountDAO.getAccountSearchLoginCheckId(id);
-	if (id1 == null) {
+	if (avo == null) {
+// 	String id1 = AccountDAO.getAccountSearchLoginCheckId(id);
+// 	if (id1 == null) {
 %>
 	<script>
 		alert("로그인에 실패하셨습니다.");

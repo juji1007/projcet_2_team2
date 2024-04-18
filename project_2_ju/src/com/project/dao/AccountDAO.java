@@ -19,14 +19,14 @@ public class AccountDAO {
 	
 	// 로그인 =====================================================
 	//로그인시 아이디로 전체내용 조회 -> 1.아이디 있는지 2. 비밀번호 일치한지 -> id : 값, pwd : 값
-	public static List<AccountVO> getAccountLogin(String id, String pwd) {
+	public static AccountVO getAccountLogin(String id, String pwd) {
 		try (SqlSession ss = DBService.getFactory().openSession()) {
 			System.out.println("id : " + id);
 			System.out.println("pwd : " + pwd);
 			Map<String, String> map = new HashMap<>();
 			map.put("id", id);
 			map.put("pwd", pwd);
-			return ss.selectList("project2.login", map);
+			return ss.selectOne("project2.login", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
