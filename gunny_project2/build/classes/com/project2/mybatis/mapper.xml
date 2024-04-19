@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MOVIE">
+		
+	<select id="one" parameterType="int" resultType="movieVO">
+		SELECT MV_NO, MV_TITLE, MV_DIRECT, MV_ACTOR, MV_GENRE, MV_RATE, MV_AUDIENCE, 
+					MV_GRADE, MV_DATE, MV_POSTER
+		FROM MOVIE
+		WHERE MV_NO = #{mv_no}
+	</select>
+	
+	<select id="movieList" parameterType="int" resultType="com.project2.movie.vo.MovieVO">
+		SELECT MV_NO, MV_TITLE, MV_DIRECT, MV_ACTOR, MV_GENRE, MV_RATE, MV_AUDIENCE, 
+					MV_GRADE, MV_DATE, MV_POSTER
+		FROM MOVIE
+		WHERE MV_NO = #{mv_no}
+	</select>
+	
+	<select id="reviewList" parameterType="int" resultType="com.project2.review.vo.ReviewVO">
+		SELECT RV_NO, MV_NO, NO, RV_NICK, RV_TITLE, RV_CONTENT, RV_DATE, RV_REC
+		FROM REVIEW
+		WHERE RV_NO = #{rv_no}
+	</select>
+	
+	<insert id="reviewInsert" parameterType="reviewVO">
+		INSERT INTO REVIEW
+				  (RV_TITLE, RV_CONTENT)
+		VALUES (#{rv_title}, #{rv_content})
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
